@@ -1,0 +1,56 @@
+.settings-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#eef2ff;
+    padding:40px;
+}
+
+.settings-card{
+    width:500px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.settings-card h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:30px;
+}
+
+.setting-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:22px 0;
+}
+
+.setting-item span{
+    font-size:17px;
+    font-weight:600;
+}
+
+.setting-item select{
+    padding:8px 12px;
+    border-radius:8px;
+}
+
+.logout-btn{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#ef4444;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#dc2626;
+}
