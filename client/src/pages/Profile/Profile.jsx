@@ -31,7 +31,7 @@ function Profile() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/users/profile",
+                `${API}/api/users/profile`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -78,7 +78,7 @@ function Profile() {
 
             const res = await axios.post(
 
-                "http://localhost:5000/api/users/profile/upload",
+                `${API}/api/users/profile/upload`,
 
                 formData,
 
@@ -101,7 +101,7 @@ function Profile() {
                 ...user,
 
                 profileImage:
-                    "http://localhost:5000" + res.data.profileImage
+                    `${API}` + res.data.profileImage
 
             });
 
@@ -129,7 +129,7 @@ function Profile() {
 
             await axios.put(
 
-                "http://localhost:5000/api/users/profile",
+                `${API}/api/users/profile`,
 
                 {
 
@@ -184,7 +184,7 @@ function Profile() {
                 <img
                     src={
                         user.profileImage
-                        ? `http://localhost:5000${user.profileImage}`
+                        ? `${API}${user.profileImage}`
                         : "https://i.pravatar.cc/250"
                     }
                     alt="Profile"

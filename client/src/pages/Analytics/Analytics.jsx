@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Pie } from "react-chartjs-2";
+import api from "../../services/api";
 
 import {
   Chart as ChartJS,
@@ -41,15 +42,9 @@ function Analytics() {
         },
       };
 
-      const incomeRes = await axios.get(
-        "http://localhost:5000/api/income",
-        config
-      );
+      const incomeRes = await api.get("/api/income", config);
 
-      const expenseRes = await axios.get(
-        "http://localhost:5000/api/expenses",
-        config
-      );
+      const expenseRes = await api.get("/api/expenses", config);
 
       setIncome(incomeRes.data.income || []);
       setExpenses(expenseRes.data.expenses || []);
