@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../services/api";
 
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
@@ -17,8 +17,6 @@ function Reports() {
         income: []
     });
 
-    const token = localStorage.getItem("token");
-
     useEffect(() => {
         fetchReport();
     }, [period]);
@@ -27,14 +25,7 @@ function Reports() {
 
         try {
 
-            const res = await axios.get(
-                `${API}/api/reports/${period}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
+            const res = await api.get(`/api/reports/${period}`);
 
             setReport(res.data);
 

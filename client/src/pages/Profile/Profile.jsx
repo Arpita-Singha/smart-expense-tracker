@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../services/api";
 import { toast } from "react-toastify";
 import "./Profile.css";
 
@@ -30,14 +30,7 @@ function Profile() {
 
         try {
 
-            const res = await axios.get(
-                `${API}/api/users/profile`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
+            const res = await api.get("/api/users/profile");
 
             console.log("Profile Data:", res.data.user);
 
@@ -76,32 +69,18 @@ function Profile() {
 
             setImageLoading(true);
 
-            const res = await axios.post(
-
-                `${API}/api/users/profile/upload`,
-
-                formData,
-
-                {
-
-                    headers: {
-
-                        Authorization: `Bearer ${token}`,
-
-                        "Content-Type": "multipart/form-data"
-
-                    }
-
-                }
-
-            );
+            const res = await api.post("/api/users/profile/upload", formData, {
+                        headers:{
+                            "Content-Type":"multipart/form-data"
+                        }
+                    });
 
             setUser({
 
                 ...user,
 
                 profileImage:
-                    `${API}` + res.data.profileImage
+                    `${import.meta.env.VITE_API_URL}${res.data.profileImage}`
 
             });
 
@@ -127,11 +106,7 @@ function Profile() {
 
             setLoading(true);
 
-            await axios.put(
-
-                `${API}/api/users/profile`,
-
-                {
+            await api.put("/api/users/profile", {
 
                     fullName: user.fullName,
 
@@ -144,16 +119,6 @@ function Profile() {
                     address: user.address
 
                 },
-
-                {
-
-                    headers: {
-
-                        Authorization: `Bearer ${token}`
-
-                    }
-
-                }
 
             );
 
@@ -184,7 +149,7 @@ function Profile() {
                 <img
                     src={
                         user.profileImage
-                        ? `${API}${user.profileImage}`
+                        ? `${import.meta.env.VITE_API_URL}${user.profileImage}`
                         : "https://i.pravatar.cc/250"
                     }
                     alt="Profile"

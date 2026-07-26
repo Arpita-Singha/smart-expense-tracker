@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../services/api";
 
 function Budgets() {
 
@@ -21,14 +21,7 @@ function Budgets() {
 
             const token = localStorage.getItem("token");
 
-            const res = await axios.get(
-                `${API}/api/expenses`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
+            const res = await api.get("/api/expenses");
 
             setExpenses(res.data.expenses);
 
@@ -42,15 +35,7 @@ function Budgets() {
     try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get(
-            `${API}/api/budgets`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-        );
-
+        const res = await api.get("/api/budgets");
         const data = res.data.budget;
 
         setBudget(data.monthlyBudget);
@@ -67,21 +52,14 @@ function Budgets() {
 
 const saveBudget = async () => {
     try {
-        const token = localStorage.getItem("token");
 
-        await axios.put(
-            `${API}/api/budgets`,
+        await api.put("/api/budgets",
             {
                 monthlyBudget: budget,
                 savingsGoalName: goalName,
                 targetAmount: target,
                 savedAmount: saved
             },
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
         );
 
         alert("Budget Saved Successfully!");

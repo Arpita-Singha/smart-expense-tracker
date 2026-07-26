@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Bar, Pie } from "react-chartjs-2";
 import api from "../../services/api";
 
@@ -28,7 +27,6 @@ function Analytics() {
   const [income, setIncome] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetchData();
@@ -36,15 +34,10 @@ function Analytics() {
 
   const fetchData = async () => {
     try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
 
-      const incomeRes = await api.get("/api/income", config);
+      const incomeRes = await api.get("/api/income");
 
-      const expenseRes = await api.get("/api/expenses", config);
+      const expenseRes = await api.get("/api/expenses");
 
       setIncome(incomeRes.data.income || []);
       setExpenses(expenseRes.data.expenses || []);
