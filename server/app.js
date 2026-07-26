@@ -18,7 +18,10 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://smart-expense-tracker-vv9p-pi.vercel.app",
+    ],
     credentials: true,
   })
 );
