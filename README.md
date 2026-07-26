@@ -128,7 +128,7 @@ smart-expense-tracker
 ## Clone the repository
 
 ```bash
-git clone https://github.com/arpita-singha/smart-expense-tracker.git
+git clone https://github.com/Arpita-Singha/smart-expense-tracker.git
 ```
 
 ## Backend Setup
@@ -136,14 +136,6 @@ git clone https://github.com/arpita-singha/smart-expense-tracker.git
 ```bash
 cd server
 npm install
-```
-
-Create a `.env` file inside the **server** folder.
-
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://expenseAdmin:expense07@cluster0.nbj3ltc.mongodb.net/?appName=Cluster0
-JWT_SECRET=ThisIsMyVeryStrongSecretKey123
 ```
 
 Run the backend
@@ -187,6 +179,10 @@ http://localhost:5000
 
 ---
 
+## 📚 Documentation
+
+- [API Documentation](API_DOCUMENTATION.md)
+
 # 🎯 Future Improvements
 
 - Export Reports as PDF
@@ -196,7 +192,6 @@ http://localhost:5000
 - Expense Predictions
 - Mobile Responsive Enhancements
 - Cloud Image Storage
-- AI-Based Spending Insights
 
 ---
 
