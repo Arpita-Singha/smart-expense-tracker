@@ -15,7 +15,7 @@ function Income() {
 
   const fetchIncome = async () => {
     try {
-      const res = await api.get("/income");
+      const res = await api.get("/api/income");
       setIncome(res.data.income);
     } catch (error) {
       toast.error("Failed to load income");

@@ -16,7 +16,7 @@ function Expenses() {
 
   const fetchExpenses = async () => {
     try {
-      const res = await api.get("/expenses");
+      const res = await api.get("/api/expenses");
       setExpenses(res.data.expenses);
     } catch (error) {
       toast.error("Failed to load expenses");

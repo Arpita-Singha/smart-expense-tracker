@@ -33,10 +33,10 @@ function Dashboard() {
 
       try {
 
-        const res = await api.get("/dashboard");
+        const res = await api.get("/api/dashboard");
         setSummary(res.data.summary);
 
-        const expenseRes = await api.get("/expenses");
+        const expenseRes = await api.get("/api/expenses");
         setExpenses(expenseRes.data.expenses);
 
       } catch (error) {
