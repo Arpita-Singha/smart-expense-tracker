@@ -38,7 +38,7 @@ function Expenses() {
     e.preventDefault();
 
     try {
-      await api.post("/expenses", form);
+      await api.post("/api/expenses", form);
 
       toast.success("Expense Added");
 
@@ -58,7 +58,7 @@ function Expenses() {
 
   const deleteExpense = async (id) => {
     try {
-      await api.delete(`/expenses/${id}`);
+      await api.delete(`/api/expenses/${id}`);
 
       toast.success("Expense Deleted");
 

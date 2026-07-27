@@ -37,7 +37,7 @@ function Income() {
     e.preventDefault();
 
     try {
-      await api.post("/income", form);
+      await api.post("/api/income", form);
 
       toast.success("Income Added");
 
@@ -57,7 +57,7 @@ function Income() {
 
   const deleteIncome = async (id) => {
     try {
-      await api.delete(`/income/${id}`);
+      await api.delete(`/api/income/${id}`);
 
       toast.success("Income Deleted");
 
